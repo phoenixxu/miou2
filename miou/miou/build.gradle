@@ -26,4 +26,5 @@ dependencies {
     compile files('libs/commons-net-3.3.jar')
     compile files('libs/log4j-1.2.16.jar')
     compile 'com.android.support:support-annotations:21.0.3'
+    compile project(':ViewPagerIndicator')
 }
