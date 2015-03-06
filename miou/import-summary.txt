@@ -1,0 +1,352 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From business:
+* proguard-project.txt
+From miou:
+* .idea\
+* .idea\.name
+* .idea\compiler.xml
+* .idea\copyright\
+* .idea\copyright\profiles_settings.xml
+* .idea\encodings.xml
+* .idea\misc.xml
+* .idea\modules.xml
+* .idea\scopes\
+* .idea\scopes\scope_settings.xml
+* .idea\vcs.xml
+* .idea\workspace.xml
+* build.gradle
+* business\
+* business\build.gradle
+* business\src\
+* business\src\main\
+* business\src\main\AndroidManifest.xml
+* business\src\main\java\
+* business\src\main\java\com\
+* business\src\main\java\com\datang\
+* business\src\main\java\com\datang\miou\
+* business\src\main\java\com\datang\miou\ActivitySupport.java
+* business\src\main\java\com\datang\miou\BaiduMapActivity.java
+* business\src\main\java\com\datang\miou\BaiduMapFragment.java
+* business\src\main\java\com\datang\miou\FragmentSupport.java
+* business\src\main\java\com\datang\miou\MiouActivity.java
+* business\src\main\java\com\datang\miou\MiouApp.java
+* business\src\main\java\com\datang\miou\annotation\
+* business\src\main\java\com\datang\miou\annotation\AfterView.java
+* business\src\main\java\com\datang\miou\annotation\AutoView.java
+* business\src\main\java\com\datang\miou\annotation\Extra.java
+* business\src\main\java\com\datang\miou\annotation\Result.java
+* business\src\main\java\com\datang\miou\api\
+* business\src\main\java\com\datang\miou\api\ProcessInterface.java
+* business\src\main\java\com\datang\miou\datastructure\
+* business\src\main\java\com\datang\miou\datastructure\Chart.java
+* business\src\main\java\com\datang\miou\datastructure\Event.java
+* business\src\main\java\com\datang\miou\datastructure\Signal.java
+* business\src\main\java\com\datang\miou\datastructure\TestLog.java
+* business\src\main\java\com\datang\miou\datastructure\TestPlan.java
+* business\src\main\java\com\datang\miou\ftp\
+* business\src\main\java\com\datang\miou\ftp\AssignSizeInputStream.java
+* business\src\main\java\com\datang\miou\ftp\FtpDownChildThread.java
+* business\src\main\java\com\datang\miou\ftp\FtpDownThread.java
+* business\src\main\java\com\datang\miou\ftp\FtpHelper.java
+* business\src\main\java\com\datang\miou\ftp\FtpStatThread.java
+* business\src\main\java\com\datang\miou\ftp\FtpUploadChildThread.java
+* business\src\main\java\com\datang\miou\ftp\FtpUploadThread.java
+* business\src\main\java\com\datang\miou\services\
+* business\src\main\java\com\datang\miou\services\GpsService.java
+* business\src\main\java\com\datang\miou\shared\
+* business\src\main\java\com\datang\miou\shared\Shared.java
+* business\src\main\java\com\datang\miou\testplan\
+* business\src\main\java\com\datang\miou\testplan\bean\
+* business\src\main\java\com\datang\miou\testplan\bean\Ftp.java
+* business\src\main\java\com\datang\miou\testplan\bean\Voice.java
+* business\src\main\java\com\datang\miou\testplan\task\
+* business\src\main\java\com\datang\miou\testplan\task\cases\
+* business\src\main\java\com\datang\miou\testplan\task\cases\AppThread.java
+* business\src\main\java\com\datang\miou\utils\
+* business\src\main\java\com\datang\miou\utils\Assert.java
+* business\src\main\java\com\datang\miou\utils\CollectionUtils.java
+* business\src\main\java\com\datang\miou\utils\FileUtils.java
+* business\src\main\java\com\datang\miou\utils\JSONUtils.java
+* business\src\main\java\com\datang\miou\utils\Log4J.java
+* business\src\main\java\com\datang\miou\utils\ObjectUtils.java
+* business\src\main\java\com\datang\miou\utils\PinYin4j.java
+* business\src\main\java\com\datang\miou\utils\PinyinHelper.java
+* business\src\main\java\com\datang\miou\utils\SDCardUtils.java
+* business\src\main\java\com\datang\miou\utils\StringUtils.java
+* business\src\main\java\com\datang\miou\utils\SystemUtil.java
+* business\src\main\java\com\datang\miou\views\
+* business\src\main\java\com\datang\miou\views\MainActivity.java
+* business\src\main\java\com\datang\miou\views\StartActivity.java
+* business\src\main\java\com\datang\miou\views\dialogs\
+* business\src\main\java\com\datang\miou\views\dialogs\LabelInfoDialogFragment.java
+* business\src\main\java\com\datang\miou\views\dialogs\LogPickerDialogFragment.java
+* business\src\main\java\com\datang\miou\views\gen\
+* business\src\main\java\com\datang\miou\views\gen\GenActivity.java
+* business\src\main\java\com\datang\miou\views\gen\GenMapFragment.java
+* business\src\main\java\com\datang\miou\views\gen\GenParamsFragment.java
+* business\src\main\java\com\datang\miou\views\gen\GenSignalFragment.java
+* business\src\main\java\com\datang\miou\views\gen\GenTelStatFragment.java
+* business\src\main\java\com\datang\miou\views\gen\ScriptSettingActivity.java
+* business\src\main\java\com\datang\miou\views\gen\SignalDetailActivity.java
+* business\src\main\java\com\datang\miou\views\gen\params\
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsGsmDataFragment.java
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsLteDataFragment.java
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsTdDataFragment.java
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsTripleIdleFragment.java
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsVogsmFragment.java
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsVolteFragment.java
+* business\src\main\java\com\datang\miou\views\gen\params\GenParamsVotdFragment.java
+* business\src\main\java\com\datang\miou\views\gen\telstat\
+* business\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatDataConnectionFragment.java
+* business\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatDataQualityFragment.java
+* business\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatMessageFragment.java
+* business\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatVoiceFragment.java
+* business\src\main\java\com\datang\miou\widget\
+* business\src\main\java\com\datang\miou\widget\AppTitle.java
+* business\src\main\java\com\datang\miou\widget\BaiduMapView.java
+* business\src\main\res\
+* business\src\main\res\drawable-hdpi\
+* business\src\main\res\drawable-hdpi\ic_launcher.png
+* business\src\main\res\drawable-mdpi\
+* business\src\main\res\drawable-mdpi\ic_launcher.png
+* business\src\main\res\drawable-xhdpi\
+* business\src\main\res\drawable-xhdpi\ic_launcher.png
+* business\src\main\res\values-v11\
+* business\src\main\res\values-v11\styles.xml
+* business\src\main\res\values-v14\
+* business\src\main\res\values-v14\styles.xml
+* business\src\main\res\values\
+* business\src\main\res\values\strings.xml
+* business\src\main\res\values\styles.xml
+* gradle\
+* gradle\wrapper\
+* gradle\wrapper\gradle-wrapper.jar
+* gradle\wrapper\gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* miou\
+* miou\build.gradle
+* miou\libs\
+* miou\libs\BaiduLBS_Android.jar
+* miou\libs\android-logging-log4j-1.0.2.jar
+* miou\libs\commons-net-3.3.jar
+* miou\libs\log4j-1.2.16.jar
+* miou\lint.xml
+* miou\src\
+* miou\src\main\
+* miou\src\main\AndroidManifest.xml
+* miou\src\main\java\
+* miou\src\main\java\com\
+* miou\src\main\java\com\datang\
+* miou\src\main\java\com\datang\miou\
+* miou\src\main\java\com\datang\miou\ActivitySupport.java
+* miou\src\main\java\com\datang\miou\BaiduMapActivity.java
+* miou\src\main\java\com\datang\miou\BaiduMapFragment.java
+* miou\src\main\java\com\datang\miou\FragmentSupport.java
+* miou\src\main\java\com\datang\miou\MiouActivity.java
+* miou\src\main\java\com\datang\miou\MiouApp.java
+* miou\src\main\java\com\datang\miou\annotation\
+* miou\src\main\java\com\datang\miou\annotation\AfterView.java
+* miou\src\main\java\com\datang\miou\annotation\AutoView.java
+* miou\src\main\java\com\datang\miou\annotation\Extra.java
+* miou\src\main\java\com\datang\miou\annotation\Result.java
+* miou\src\main\java\com\datang\miou\api\
+* miou\src\main\java\com\datang\miou\api\ProcessInterface.java
+* miou\src\main\java\com\datang\miou\datastructure\
+* miou\src\main\java\com\datang\miou\datastructure\Chart.java
+* miou\src\main\java\com\datang\miou\datastructure\Event.java
+* miou\src\main\java\com\datang\miou\datastructure\Signal.java
+* miou\src\main\java\com\datang\miou\datastructure\TestLog.java
+* miou\src\main\java\com\datang\miou\datastructure\TestPlan.java
+* miou\src\main\java\com\datang\miou\ftp\
+* miou\src\main\java\com\datang\miou\ftp\AssignSizeInputStream.java
+* miou\src\main\java\com\datang\miou\ftp\FtpDownChildThread.java
+* miou\src\main\java\com\datang\miou\ftp\FtpDownThread.java
+* miou\src\main\java\com\datang\miou\ftp\FtpHelper.java
+* miou\src\main\java\com\datang\miou\ftp\FtpStatThread.java
+* miou\src\main\java\com\datang\miou\ftp\FtpUploadChildThread.java
+* miou\src\main\java\com\datang\miou\ftp\FtpUploadThread.java
+* miou\src\main\java\com\datang\miou\services\
+* miou\src\main\java\com\datang\miou\services\GpsService.java
+* miou\src\main\java\com\datang\miou\shared\
+* miou\src\main\java\com\datang\miou\shared\Shared.java
+* miou\src\main\java\com\datang\miou\testplan\
+* miou\src\main\java\com\datang\miou\testplan\bean\
+* miou\src\main\java\com\datang\miou\testplan\bean\Ftp.java
+* miou\src\main\java\com\datang\miou\testplan\bean\Voice.java
+* miou\src\main\java\com\datang\miou\testplan\task\
+* miou\src\main\java\com\datang\miou\testplan\task\cases\
+* miou\src\main\java\com\datang\miou\testplan\task\cases\AppThread.java
+* miou\src\main\java\com\datang\miou\utils\
+* miou\src\main\java\com\datang\miou\utils\Assert.java
+* miou\src\main\java\com\datang\miou\utils\CollectionUtils.java
+* miou\src\main\java\com\datang\miou\utils\FileUtils.java
+* miou\src\main\java\com\datang\miou\utils\JSONUtils.java
+* miou\src\main\java\com\datang\miou\utils\Log4J.java
+* miou\src\main\java\com\datang\miou\utils\ObjectUtils.java
+* miou\src\main\java\com\datang\miou\utils\PinYin4j.java
+* miou\src\main\java\com\datang\miou\utils\PinyinHelper.java
+* miou\src\main\java\com\datang\miou\utils\SDCardUtils.java
+* miou\src\main\java\com\datang\miou\utils\StringUtils.java
+* miou\src\main\java\com\datang\miou\utils\SystemUtil.java
+* miou\src\main\java\com\datang\miou\views\
+* miou\src\main\java\com\datang\miou\views\MainActivity.java
+* miou\src\main\java\com\datang\miou\views\StartActivity.java
+* miou\src\main\java\com\datang\miou\views\dialogs\
+* miou\src\main\java\com\datang\miou\views\dialogs\LabelInfoDialogFragment.java
+* miou\src\main\java\com\datang\miou\views\dialogs\LogPickerDialogFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\
+* miou\src\main\java\com\datang\miou\views\gen\GenActivity.java
+* miou\src\main\java\com\datang\miou\views\gen\GenMapFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\GenParamsFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\GenSignalFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\GenTelStatFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\ScriptSettingActivity.java
+* miou\src\main\java\com\datang\miou\views\gen\SignalDetailActivity.java
+* miou\src\main\java\com\datang\miou\views\gen\params\
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsGsmDataFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsLteDataFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsTdDataFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsTripleIdleFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsVogsmFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsVolteFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\params\GenParamsVotdFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\telstat\
+* miou\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatDataConnectionFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatDataQualityFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatMessageFragment.java
+* miou\src\main\java\com\datang\miou\views\gen\telstat\GenTelStatVoiceFragment.java
+* miou\src\main\java\com\datang\miou\widget\
+* miou\src\main\java\com\datang\miou\widget\AppTitle.java
+* miou\src\main\java\com\datang\miou\widget\BaiduMapView.java
+* miou\src\main\jniLibs\
+* miou\src\main\jniLibs\armeabi\
+* miou\src\main\jniLibs\armeabi\libBaiduMapSDK_v3_2_0_15.so
+* miou\src\main\jniLibs\armeabi\liblocSDK5.so
+* miou\src\main\res\
+* miou\src\main\res\drawable-hdpi\
+* miou\src\main\res\drawable-hdpi\back.png
+* miou\src\main\res\drawable-hdpi\cus_test.png
+* miou\src\main\res\drawable-hdpi\gen_test.png
+* miou\src\main\res\drawable-hdpi\ic_launcher.png
+* miou\src\main\res\drawable-hdpi\inner_test.png
+* miou\src\main\res\drawable-hdpi\main_btn_datas.png
+* miou\src\main\res\drawable-hdpi\main_btn_exit.png
+* miou\src\main\res\drawable-hdpi\main_btn_setting.png
+* miou\src\main\res\drawable-hdpi\main_top.jpg
+* miou\src\main\res\drawable-hdpi\ssv_test.png
+* miou\src\main\res\drawable-hdpi\start_bg.jpg
+* miou\src\main\res\drawable-mdpi\
+* miou\src\main\res\drawable-mdpi\ic_launcher.png
+* miou\src\main\res\drawable-xhdpi\
+* miou\src\main\res\drawable-xhdpi\ic_launcher.png
+* miou\src\main\res\drawable\
+* miou\src\main\res\drawable\menu.xml
+* miou\src\main\res\layout\
+* miou\src\main\res\layout\dialog_label_info.xml
+* miou\src\main\res\layout\gen.xml
+* miou\src\main\res\layout\gen_map.xml
+* miou\src\main\res\layout\gen_menu_item.xml
+* miou\src\main\res\layout\gen_params.xml
+* miou\src\main\res\layout\gen_params_gsm_data.xml
+* miou\src\main\res\layout\gen_params_idle_triple.xml
+* miou\src\main\res\layout\gen_params_lte_data.xml
+* miou\src\main\res\layout\gen_params_td_data.xml
+* miou\src\main\res\layout\gen_params_vogsm.xml
+* miou\src\main\res\layout\gen_params_volte.xml
+* miou\src\main\res\layout\gen_params_votd.xml
+* miou\src\main\res\layout\gen_signal.xml
+* miou\src\main\res\layout\gen_tel_stat.xml
+* miou\src\main\res\layout\gen_tel_stat_data_connection.xml
+* miou\src\main\res\layout\gen_tel_stat_data_quality.xml
+* miou\src\main\res\layout\gen_tel_stat_message.xml
+* miou\src\main\res\layout\gen_tel_stat_voice.xml
+* miou\src\main\res\layout\log_picker_dialog.xml
+* miou\src\main\res\layout\main.xml
+* miou\src\main\res\layout\map.xml
+* miou\src\main\res\layout\script_setting.xml
+* miou\src\main\res\layout\signal_detail.xml
+* miou\src\main\res\layout\start.xml
+* miou\src\main\res\layout\table_row_4_items_blue.xml
+* miou\src\main\res\layout\table_row_4_items_white.xml
+* miou\src\main\res\layout\table_row_7_items_blue.xml
+* miou\src\main\res\layout\table_row_7_items_white.xml
+* miou\src\main\res\layout\test_log_list_item.xml
+* miou\src\main\res\layout\test_plan_list_item.xml
+* miou\src\main\res\layout\title.xml
+* miou\src\main\res\values-v11\
+* miou\src\main\res\values-v11\styles.xml
+* miou\src\main\res\values-v14\
+* miou\src\main\res\values-v14\styles.xml
+* miou\src\main\res\values\
+* miou\src\main\res\values\colors.xml
+* miou\src\main\res\values\strings.xml
+* miou\src\main\res\values\styles.xml
+* miou\src\main\res\values\test_type_array.xml
+* proguard-project.txt
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.0.0
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In business:
+* AndroidManifest.xml => business\src\main\AndroidManifest.xml
+* res\ => business\src\main\res\
+* D:\github\miou2\miou\src\ => business\src\main\java\
+In miou:
+* AndroidManifest.xml => miou\src\main\AndroidManifest.xml
+* libs\android-logging-log4j-1.0.2.jar => miou\libs\android-logging-log4j-1.0.2.jar
+* libs\armeabi\libBaiduMapSDK_v3_2_0_15.so => miou\src\main\jniLibs\armeabi\libBaiduMapSDK_v3_2_0_15.so
+* libs\armeabi\liblocSDK5.so => miou\src\main\jniLibs\armeabi\liblocSDK5.so
+* libs\BaiduLBS_Android.jar => miou\libs\BaiduLBS_Android.jar
+* libs\commons-net-3.3.jar => miou\libs\commons-net-3.3.jar
+* libs\log4j-1.2.16.jar => miou\libs\log4j-1.2.16.jar
+* lint.xml => miou\lint.xml
+* res\ => miou\src\main\res\
+* src\ => miou\src\main\java\
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
