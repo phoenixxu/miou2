@@ -1,4 +1,4 @@
-﻿package com.datang.miou.views.gen;
+package com.datang.miou.views.gen;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -27,7 +27,7 @@ import com.datang.miou.views.gen.params.GenParamsVolteFragment;
 import com.datang.miou.views.gen.params.GenParamsVotdFragment;
 
 /**
- * ������
+ * 参数
  * 
  * @author suntongwei
  */
@@ -56,19 +56,19 @@ public class GenParamsFragment extends FragmentSupport {
 
 		@Override
 		public void onPageScrollStateChanged(int arg0) {
-			// TODO ���������������������������
+			// TODO 自动生成的方法存根
 			
 		}
 
 		@Override
 		public void onPageScrolled(int arg0, float arg1, int arg2) {
-			// TODO ���������������������������
+			// TODO 自动生成的方法存根
 			
 		}
 
 		@Override
 		public void onPageSelected(int position) {
-			// TODO ���������������������������
+			// TODO 自动生成的方法存根
 			textViews[position].setTextColor(Color.BLUE);
 			for (int i = 0; i < PARAM_PAGES; i++) {		
 				if (i != position) {
@@ -81,17 +81,17 @@ public class GenParamsFragment extends FragmentSupport {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO ���������������������������
+		// TODO 自动生成的方法存根
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		// TODO ���������������������������
+		// TODO 自动生成的方法存根
 
 		/*
-		 * ������������������������������������������������������������PageViewer���������������������������
+		 * 这段代码为了解决切换到别的页面再返回这个PageViewer时显示不正常的问题
 		 */
 		if (mView != null) {
 			ViewGroup parent = (ViewGroup) mView.getParent();
@@ -112,7 +112,7 @@ public class GenParamsFragment extends FragmentSupport {
 
 			@Override
 			public Fragment getItem(int pos) {
-				// TODO ���������������������������			
+				// TODO 自动生成的方法存根			
 				switch (pos) {
 					case 0:
 						return new GenParamsVolteFragment();
@@ -147,7 +147,7 @@ public class GenParamsFragment extends FragmentSupport {
 	}
 
 	private void AddNeighborCellInfoTable() {
-		// TODO ���������������������������
+		// TODO 自动生成的方法存根
 		neighborCellInfoTable = (TableLayout) mView.findViewById(R.id.neighbor_cell_info_table);
 		
 		addSevenColumnsForTable(getActivity(), neighborCellInfoTable, "EARFCN");
@@ -156,7 +156,7 @@ public class GenParamsFragment extends FragmentSupport {
 	}
 
 	private void AddServingCellInfoTable() {
-		// TODO ���������������������������
+		// TODO 自动生成的方法存根
 		servingCellInfoTable = (TableLayout) mView.findViewById(R.id.serving_cell_info_table);
 		
 		TextView[] views;
@@ -226,7 +226,7 @@ public class GenParamsFragment extends FragmentSupport {
 		table.addView(row);
 		
 		/* 
-		 * ������������������������������TextView���������������������������
+		 * 返回该行对应数据域的TextView示例，以便数据更改
 		 */
 		return (TextView) row.findViewById(R.id.name2_textView);
 	}
@@ -254,7 +254,7 @@ public class GenParamsFragment extends FragmentSupport {
 	}
 	
 	private void AddPageViewrContents() {
-		// TODO ���������������������������
+		// TODO 自动生成的方法存根
 		textViews = new TextView[PARAM_PAGES];
 		
 		indicator = (TextView) mView.findViewById(R.id.indicator_1);
