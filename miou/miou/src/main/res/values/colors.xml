@@ -17,4 +17,6 @@
     <!-- 按钮绿 -->
     <color name="button_green">#8ac654</color>
     <color name="table_background">#82aaf5</color>
+    <!--字体颜色-->
+    <color name="black_text">#ff4c4c4c</color>
 </resources>

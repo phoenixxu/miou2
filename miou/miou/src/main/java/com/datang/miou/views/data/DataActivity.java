@@ -15,11 +15,12 @@ import android.widget.TextView;
 
 import com.datang.miou.R;
 import com.viewpagerindicator.TabPageIndicator;
+
 /**
  * Created by dingzhongchang on 2015/3/6.
  */
 public class DataActivity extends FragmentActivity {
-    private static final String[] CONTENT = new String[] { "数据上传设置", "测试序列管理", "地图文件下载" };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +30,14 @@ public class DataActivity extends FragmentActivity {
 
         FragmentPagerAdapter adapter = new DataFragmentAdapter(getSupportFragmentManager());
 
-        ViewPager pager = (ViewPager)findViewById(R.id.pager);
+        ViewPager pager = (ViewPager) findViewById(R.id.pager);
         pager.setAdapter(adapter);
 
-        TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
+        TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(pager);
-        TextView  mTitleTextView = (TextView) findViewById(R.id.app_title_value);
+        TextView mTitleTextView = (TextView) findViewById(R.id.app_title_value);
         mTitleTextView.setText("数据管理");
-        ImageView  mBackButton = (ImageView) findViewById(R.id.app_title_left);
+        ImageView mBackButton = (ImageView) findViewById(R.id.app_title_left);
         mBackButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -53,13 +54,16 @@ public class DataActivity extends FragmentActivity {
     }
 
     class DataFragmentAdapter extends FragmentPagerAdapter {
+        private String[] CONTENT = new String[]{"数据上传设置", "测试序列管理", "地图文件下载"};
+        private Fragment[] fragments = new Fragment[]{new DataUploadSettingFragment(), new TestPlanManagerFragment(), new MapFileDownloadFragment()};
+
         public DataFragmentAdapter(FragmentManager fm) {
             super(fm);
         }
 
         @Override
         public Fragment getItem(int position) {
-            return  DataFragment.newInstance(CONTENT[position % CONTENT.length]);
+            return fragments[position % fragments.length];
         }
 
         @Override
