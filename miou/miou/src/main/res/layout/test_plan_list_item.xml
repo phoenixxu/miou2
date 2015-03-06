@@ -2,55 +2,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="horizontal"
-    android:padding="15dp">
+    android:gravity="center"
+    android:weightSum="1.0" >
 
     <CheckBox
-        android:id="@+id/cb_check"
+        android:id="@+id/select_checkBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1" >
+    </CheckBox>
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/id_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="名称" />
+        android:layout_weight="0.2"
+        android:gravity="center" >
+
+    </TextView>
 
     <TextView
-        android:id="@+id/tv_create_time"
+        android:id="@+id/name_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="创建时间" />
+        android:layout_weight="0.3"
+        android:gravity="center" >
+
+    </TextView>
+
+
+    <Button
+        android:id="@+id/increase_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/increase"
+        android:layout_weight="0.1" >
+
+    </Button>
 
     <TextView
-        android:id="@+id/tv_creator_id"
+        android:id="@+id/times_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="创建者ID" />
+        android:layout_weight="0.2"
+        android:gravity="center" >
 
-    <TextView
-        android:id="@+id/tv_modified_time"
+    </TextView>
+    <Button
+        android:id="@+id/decrease_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="修改时间" />
+        android:text="@string/decrease"
+        android:layout_weight="0.1" >
 
-    <TextView
-        android:id="@+id/tv_exed_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="累计执行次数" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/back" />
+    </Button>
 
 </LinearLayout>

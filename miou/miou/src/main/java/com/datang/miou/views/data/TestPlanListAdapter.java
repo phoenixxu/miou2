@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import com.datang.miou.R;
 
@@ -15,11 +16,13 @@ public class TestPlanListAdapter extends ArrayAdapter<TestPlanInfo> {
 
     private final Context mContext;
     private final TestPlanInfo[] mItems;
+    private final LayoutInflater mLayoutInflater;
 
-    public TestPlanListAdapter(Context context, int textViewResourceId, TestPlanInfo[] objects) {
-        super(context, textViewResourceId, objects);
+    public TestPlanListAdapter(Context context, TestPlanInfo[] objects) {
+        super(context, R.layout.data_list_item, objects);
         this.mContext = context;
         this.mItems = objects;
+        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -27,29 +30,14 @@ public class TestPlanListAdapter extends ArrayAdapter<TestPlanInfo> {
         View v = convertView;
 
         if (v == null) {
-
-            LayoutInflater vi = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            v = vi.inflate(R.layout.test_plan_list_item, null);
-
+            v = mLayoutInflater.inflate(R.layout.data_list_item, parent, false);
         }
 
         TestPlanInfo info = mItems[position];
 
         if (info != null) {
+            ((TextView) v.findViewById(R.id.tv_creator_id)).setText(info.creatorId);
 
-            TextView content1 = (TextView) v.findViewById(R.id.list_content1);
-
-            TextView content2 = (TextView) v.findViewById(R.id.list_content2);
-
-            if (content1 != null) {
-
-                content1.setText(user.classID);
-            }
-            if (content2 != null) {
-
-                content2.setText(user.state);
-            }
         }
         return v;
     }

@@ -85,7 +85,7 @@
 
     </LinearLayout>
 
-    <include layout="@layout/test_plan_list_header" />
+    <include layout="@layout/data_list_header" />
 
     <ListView
         android:id="@+id/test_plan_listView"

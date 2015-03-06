@@ -15,7 +15,6 @@ import com.datang.miou.R;
 public class TestPlanManagerFragment extends Fragment {
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +22,9 @@ public class TestPlanManagerFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_testplan,container,false);
+        View root = inflater.inflate(R.layout.fragment_testplan, container, false);
         ListView listView = (ListView) root.findViewById(R.id.test_plan_listView);
-
+        listView.setAdapter(new TestPlanListAdapter(this.getActivity(), new TestPlanInfo[]{new TestPlanInfo()}));
 
         return root;
     }
