@@ -19,4 +19,9 @@
 	<string name="decrease">-</string>
 	<string name="cell_info">服务小区和邻小区信息</string>
 	<string name="params">指标呈现</string>
+
+    <string name="page_onekey">一键测试</string>
+    <string name="page_task">任务测试</string>
+    <string name="page_result">测试结果</string>
+    <string name="page_signal">信令回溯</string>
 </resources>

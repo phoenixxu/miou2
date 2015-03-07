@@ -19,4 +19,9 @@
     <color name="table_background">#82aaf5</color>
     <!--字体颜色-->
     <color name="black_text">#ff4c4c4c</color>
+
+    <color name="tab_bar_background">#FF2B5B9B</color>
+
+    <color name="tab_text_color_dark">#FF433F2F</color>
+    <color name="tab_text_color_light">#FFF8F8FC</color>
 </resources>

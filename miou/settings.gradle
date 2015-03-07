@@ -1,3 +1,3 @@
-include ':business', ':actionbarsherlock'
+include ':business', ':actionbarsherlock', ':adc'
 include ':miou'
 include ':ViewPagerIndicator'

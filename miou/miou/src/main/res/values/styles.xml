@@ -38,8 +38,12 @@
         <item name="android:textColor">@color/radio_text_color</item>
         <item name="android:background">@drawable/half_right</item>
     </style>
+
     <style name="BgButton" parent="android:Widget.Button">
         <item name="android:textColor">@color/btn_text_color</item>
         <item name="android:background">@drawable/normal_btn</item>
     </style>
+
+
+
 </resources>
