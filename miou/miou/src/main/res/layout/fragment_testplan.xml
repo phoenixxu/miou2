@@ -44,19 +44,20 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:focusableInTouchMode="true" />
 
-        <EditText
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <SearchView
+            android:id="@+id/sv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="5dp"
-            android:src="@drawable/back" />
+            android:theme="@android:style/Theme.Holo" />
 
     </LinearLayout>
 
@@ -66,18 +67,23 @@
         android:layout_margin="10dp">
 
         <Button
+            style="@style/BgButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="新增" />
 
         <Button
+            style="@style/BgButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:text="编辑" />
 
         <Button
+            style="@style/BgButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

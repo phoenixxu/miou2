@@ -4,7 +4,7 @@
     android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="16" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -63,11 +63,13 @@
         <activity
             android:name=".views.data.DataActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.Tab">
+            android:theme="@style/Theme.Tab"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.MainActivity"></meta-data>
         </activity>
+        <activity android:name=".widget.FileBrowserActivity" />
     </application>
 
 </manifest>
