@@ -1,10 +1,10 @@
 package com.datang.adc.handler;
 
 import android.util.Log;
-import com.datang.client.IMsg;
-import com.datang.client.UpMsg;
-import com.datang.client.util.SDCardUtils;
-import com.datang.client.util.Util;
+import com.datang.adc.IMsg;
+import com.datang.adc.UpMsg;
+import com.datang.adc.util.SDCardUtils;
+import com.datang.adc.util.Util;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.io.File;

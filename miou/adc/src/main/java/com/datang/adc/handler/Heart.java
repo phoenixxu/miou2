@@ -6,8 +6,8 @@ package com.datang.adc.handler;//package com.datang.client.handler;
 //import com.datang.client.UpMsg;
 //import io.netty.channel.ChannelHandlerContext;
 //
-//import java.util.LinkedHashMap;
-//import java.util.concurrent.TimeUnit;
+//import java.com.datang.business.util.LinkedHashMap;
+//import java.com.datang.business.util.concurrent.TimeUnit;
 //
 ///**
 // * Created by dingzhongchang on 13-6-5.

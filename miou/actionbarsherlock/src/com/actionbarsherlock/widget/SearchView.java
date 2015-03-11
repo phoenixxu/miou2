@@ -729,7 +729,7 @@ public class SearchView extends LinearLayout implements CollapsibleActionView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        // Let the standard measurements take effect in iconified state.
+        // Let the standard com.datang.business.measurements take effect in iconified state.
         if (isIconified()) {
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
             return;

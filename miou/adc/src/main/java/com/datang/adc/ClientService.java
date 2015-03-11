@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
-import com.datang.client.util.Util;
+
+import com.datang.adc.util.Util;
 
 public class ClientService extends Service {
     public static final ClientManager MANAGER = ClientManager.getManager();
