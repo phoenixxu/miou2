@@ -36,7 +36,7 @@ public class TestPlanListAdapter extends ArrayAdapter<TestPlanInfo> {
         TestPlanInfo info = mItems[position];
 
         if (info != null) {
-            ((TextView) v.findViewById(R.id.tv_creator_id)).setText(info.creatorId);
+//            ((TextView) v.findViewById(R.id.tv_creator_id)).setText(info.creatorId);
 
         }
         return v;
