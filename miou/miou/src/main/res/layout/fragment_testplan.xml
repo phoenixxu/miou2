@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/menu_gray"
-    android:orientation="vertical"
-    android:padding="15dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,23 +49,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@color/white"
         android:orientation="vertical">
 
         <SearchView
             android:id="@+id/sv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@android:style/Theme.Holo" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_margin="15dp">
 
         <Button
+            android:id="@+id/bt_plan_add"
             style="@style/BgButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -75,6 +76,7 @@
             android:text="新增" />
 
         <Button
+            android:id="@+id/bt_plan_edit"
             style="@style/BgButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -83,6 +85,7 @@
             android:text="编辑" />
 
         <Button
+            android:id="@+id/bt_plan_download"
             style="@style/BgButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -123,10 +126,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="15dp"
+            android:layout_margin="15dp"
             android:layout_weight="1">
 
             <Button
+                android:id="@+id/bt_plan_all"
                 style="@style/BgButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -136,6 +140,7 @@
 
 
             <Button
+                android:id="@+id/bt_plan_del"
                 style="@style/BgButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

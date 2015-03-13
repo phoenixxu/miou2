@@ -79,6 +79,7 @@
                 android:value=".views.MainActivity"></meta-data>
         </activity>
         <activity android:name=".widget.FileBrowserActivity" />
+        <activity android:name=".views.data.NewPlanListActivity" />
     </application>
 
 </manifest>
