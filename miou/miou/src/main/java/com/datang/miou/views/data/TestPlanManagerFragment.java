@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.datang.miou.R;
@@ -23,10 +27,9 @@ public class TestPlanManagerFragment extends Fragment {
 
     private static final int REQUEST_NEWPLAN = 1000;
     public static final String RESULT_NEWPLAN = "NEW_PALN";
-    private SearchView sv;
-    private TestPlanListAdapter testPlanListAdapter;
+    private TestPlanListAdapter mPlanListAdapter;
     private FragmentActivity mContext;
-    private ListView planListView;
+    private ListView mPlanListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,57 +40,59 @@ public class TestPlanManagerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_testplan, container, false);
-        planListView = (ListView) root.findViewById(R.id.test_plan_listView);
-        testPlanListAdapter = new TestPlanListAdapter(this.getActivity(), new TestPlanInfo[]{});
-        planListView.setAdapter(testPlanListAdapter);
-        planListView.setTextFilterEnabled(true);
-
-
-//        lv = (ListView) root.findViewById(R.id.lv);
-//        String[] strings = this.getResources().getStringArray(R.array.testtype);
-//        lv.setAdapter(new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_list_item_1, strings));
-//        lv.setTextFilterEnabled(true);
-
-        sv = (SearchView) root.findViewById(R.id.sv);
-        //设置该SearchView默认是否自动缩小为图标
-        sv.setIconifiedByDefault(true);
-        //为该SearchView组件设置事件监听器
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            //用户输入字符时激发该方法
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                if (TextUtils.isEmpty(newText)) {
-                    //清楚ListView的过滤
-                    planListView.clearTextFilter();
-
-                } else {
-                    //使用用户输入的内容对ListView的列表项进行过滤
-                    planListView.setFilterText(newText);
-                }
-                return false;
-            }
-
-            //单击搜索按钮时激发该方法
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                //实际应用中应该在该方法内执行实际查询
-                //此处仅使用Toast显示用户输入的查询内容
-                Toast.makeText(mContext, "您选择的是：" + query, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-        //设置该SearchView显示搜索按钮
-        sv.setSubmitButtonEnabled(true);
-
-        //设置该SearchView内默认显示的提示文本
-        sv.setQueryHint("查找");
-
+        mPlanListView = (ListView) root.findViewById(R.id.test_plan_listView);
+        mPlanListAdapter = new TestPlanListAdapter(this.getActivity(), new TestPlanInfo[]{});
+        mPlanListView.setAdapter(mPlanListAdapter);
+        mPlanListView.setTextFilterEnabled(true);
         initOnClick(root);
 
         return root;
     }
 
     private void initOnClick(final View root) {
+        //搜索
+        final EditText mEtSearch = (EditText) root.findViewById(R.id.et_search);
+        final Button mBtnClearSearchText = (Button) root.findViewById(R.id.btn_clear_search_text);
+        final LinearLayout mLayoutClearSearchText = (LinearLayout) root.findViewById(R.id.layout_clear_search_text);
+        mEtSearch.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mPlanListAdapter.getFilter().filter(mEtSearch.getText().toString().trim());
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                int textLength = mEtSearch.getText().length();
+                if (textLength > 0) {
+                    mLayoutClearSearchText.setVisibility(View.VISIBLE);
+                } else {
+                    mLayoutClearSearchText.setVisibility(View.GONE);
+                }
+            }
+        });
+        mEtSearch.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_CLEAR) {
+                    mPlanListAdapter.clearFilter();
+                }
+                return false;
+            }
+        });
+        mBtnClearSearchText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEtSearch.setText("");
+                mLayoutClearSearchText.setVisibility(View.GONE);
+                mPlanListAdapter.clearFilter();
+            }
+        });
+
         root.findViewById(R.id.bt_plan_add).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +106,7 @@ public class TestPlanManagerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO 编辑测试任务
-                TestPlanInfo info = testPlanListAdapter.getSelected();
+                TestPlanInfo info = mPlanListAdapter.getSelected();
             }
         });
         root.findViewById(R.id.bt_plan_download).setOnClickListener(new View.OnClickListener() {
@@ -114,7 +119,7 @@ public class TestPlanManagerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO 全选
-                testPlanListAdapter.selectAll(true);
+                mPlanListAdapter.selectAll(true);
             }
         });
 
@@ -122,7 +127,7 @@ public class TestPlanManagerFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO  删除测试序列
-                testPlanListAdapter.del();
+                mPlanListAdapter.del();
                 scrollToBottom();
             }
         });
@@ -135,7 +140,7 @@ public class TestPlanManagerFragment extends Fragment {
                 String planName = data.getExtras().getString(RESULT_NEWPLAN);
                 //TODO 返回新建的测试序列
                 Toast.makeText(mContext, planName, Toast.LENGTH_SHORT).show();
-                testPlanListAdapter.add(new TestPlanInfo(planName, "admin"));
+                mPlanListAdapter.add(new TestPlanInfo(planName, "admin"));
                 scrollToBottom();
             }
         }
@@ -143,7 +148,7 @@ public class TestPlanManagerFragment extends Fragment {
     }
 
     private void scrollToBottom() {
-        planListView.setSelection(testPlanListAdapter.getCount() - 1);
+        mPlanListView.setSelection(mPlanListAdapter.getCount() - 1);
     }
 
     @Override

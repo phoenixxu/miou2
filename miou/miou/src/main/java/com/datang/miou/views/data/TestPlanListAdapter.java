@@ -24,8 +24,11 @@ import java.util.List;
 public class TestPlanListAdapter extends BaseAdapter implements Filterable {
 
     private final Context mContext;
-    private final List<TestPlanInfo> mItems;
+    private List<TestPlanInfo> mItems;
+    private List<TestPlanInfo> mOrigItems;
     private final LayoutInflater mLayoutInflater;
+    private final Object mLock = new Object();
+    private Filter mFilter;
 
 
     public TestPlanListAdapter(Context context, TestPlanInfo[] objects) {
@@ -58,9 +61,9 @@ public class TestPlanListAdapter extends BaseAdapter implements Filterable {
             v = mLayoutInflater.inflate(R.layout.data_list_item, parent, false);
         }
 
-        if (mItems.size() > position) {
+        if (getCount() > position) {
 
-            final TestPlanInfo info = mItems.get(position);
+            final TestPlanInfo info = (TestPlanInfo) getItem(position);
 
             if (info != null) {
                 final CheckBox checkBox = (CheckBox) v.findViewById(R.id.cb_checked);
@@ -83,34 +86,68 @@ public class TestPlanListAdapter extends BaseAdapter implements Filterable {
     }
 
     public void selectAll(boolean isSelected) {
-        if (mItems == null || mItems.isEmpty()) return;
-        for (TestPlanInfo info : mItems) {
-            if (info == null) continue;
-            info.isChecked = isSelected;
-        }
-        notifyDataSetChanged();
-    }
-
-    public void del() {
-        if (mItems == null || mItems.isEmpty()) return;
-        Iterator<TestPlanInfo> iterator = mItems.iterator();
-        while (iterator.hasNext()) {
-            TestPlanInfo info = iterator.next();
-            if (info.isChecked) {
-                iterator.remove();
+        synchronized (mLock) {
+            if (mOrigItems != null) {
+                for (TestPlanInfo info : mOrigItems) {
+                    if (info == null) continue;
+                    info.isChecked = isSelected;
+                }
+            } else {
+                if (mItems == null || mItems.isEmpty()) return;
+                for (TestPlanInfo info : mItems) {
+                    if (info == null) continue;
+                    info.isChecked = isSelected;
+                }
             }
         }
         notifyDataSetChanged();
     }
 
+    public void del() {
+        synchronized (mLock) {
+            if (mOrigItems != null) {
+                Iterator<TestPlanInfo> iterator = mOrigItems.iterator();
+                while (iterator.hasNext()) {
+                    TestPlanInfo info = iterator.next();
+                    if (info.isChecked) {
+                        iterator.remove();
+                    }
+                }
+            } else {
+                if (mItems == null || mItems.isEmpty()) return;
+                Iterator<TestPlanInfo> iterator = mItems.iterator();
+                while (iterator.hasNext()) {
+                    TestPlanInfo info = iterator.next();
+                    if (info.isChecked) {
+                        iterator.remove();
+                    }
+                }
+            }
+        }
+        clearFilter();
+        notifyDataSetChanged();
+    }
+
 
     public TestPlanInfo getSelected() {
-        if (mItems == null || mItems.isEmpty()) return null;
-        Iterator<TestPlanInfo> iterator = mItems.iterator();
-        while (iterator.hasNext()) {
-            TestPlanInfo info = iterator.next();
-            if (info.isChecked) {
-                return info;
+        synchronized (mLock) {
+            if (mOrigItems != null) {
+                Iterator<TestPlanInfo> iterator = mOrigItems.iterator();
+                while (iterator.hasNext()) {
+                    TestPlanInfo info = iterator.next();
+                    if (info.isChecked) {
+                        return info;
+                    }
+                }
+            } else {
+                if (mItems == null || mItems.isEmpty()) return null;
+                Iterator<TestPlanInfo> iterator = mItems.iterator();
+                while (iterator.hasNext()) {
+                    TestPlanInfo info = iterator.next();
+                    if (info.isChecked) {
+                        return info;
+                    }
+                }
             }
         }
         return null;
@@ -118,9 +155,16 @@ public class TestPlanListAdapter extends BaseAdapter implements Filterable {
 
     public void add(TestPlanInfo admin) {
         if (admin != null) {
-            mItems.add(admin);
-        }
+            synchronized (mLock) {
+                if (mOrigItems != null) {
+                    mOrigItems.add(admin);
+                } else {
+                    mItems.add(admin);
+                }
+            }
 
+        }
+        clearFilter();
         notifyDataSetChanged();
 
     }
@@ -128,34 +172,68 @@ public class TestPlanListAdapter extends BaseAdapter implements Filterable {
 
     @Override
     public Filter getFilter() {
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint) {
-                constraint = constraint.toString().toLowerCase();
-                FilterResults result = new FilterResults();
+        if (mFilter == null) {
+            mFilter = new PlanListFilter();
+        }
+        return mFilter;
 
-                if (constraint != null && constraint.toString().length() > 0) {
-                    List<TestPlanInfo> founded = new ArrayList<>();
-                    for (TestPlanInfo item : mItems) {
-                        if (item.toString().toLowerCase().contains(constraint)) {
-                            founded.add(item);
-                        }
-                    }
+    }
 
-                    result.values = founded;
-                    result.count = founded.size();
-                } else {
-                    result.values = mItems;
-                    result.count = mItems.size();
+    public void clearFilter() {
+        synchronized (mLock) {
+            if (mOrigItems != null) {
+                mItems = mOrigItems;
+                mOrigItems = null;
+            }
+        }
+
+    }
+
+    private class PlanListFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            constraint = constraint.toString().toLowerCase();
+            FilterResults result = new FilterResults();
+            if (null == mOrigItems) {
+                synchronized (mLock) {
+                    mOrigItems = new LinkedList<>(mItems);
                 }
-                return result;
+            }
+            if (null == constraint || constraint.length() == 0) {
+                ArrayList<TestPlanInfo> list;
+                synchronized (mLock) {
+                    list = new ArrayList<>(mOrigItems);
+                }
+
+                result.values = list;
+                result.count = list.size();
+            } else {
+                ArrayList<TestPlanInfo> list;
+                synchronized (mLock) {
+                    list = new ArrayList<>(mOrigItems);
+                }
+                List<TestPlanInfo> founded = new ArrayList<>();
+                for (TestPlanInfo item : list) {
+                    if (item.toString().toLowerCase().contains(constraint)) {
+                        founded.add(item);
+                    }
+                }
+
+                result.values = founded;
+                result.count = founded.size();
+            }
+            return result;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mItems = (List<TestPlanInfo>) results.values;
+            if (results.count > 0) {
+                notifyDataSetChanged();
+            } else {
+                notifyDataSetInvalidated();
             }
 
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results) {
-                mItems = (List<TestPlanInfo>) results.values;
-                notifyDataSetChanged();
-            }
-        };
+        }
     }
 }

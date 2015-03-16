@@ -10,9 +10,20 @@ import com.datang.miou.views.percept.BasePageFragment;
 
 
 public class OneKeyPageFragment extends BasePageFragment {
-	
-	@Override
-	protected View initUI(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_page_home, null);
-	}
+
+    @Override
+    protected View initUI(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_page_home, container, false);
+        init(root);
+        return root;
+    }
+
+    private void init(View root) {
+        root.findViewById(R.id.tv_html_test).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
 }
