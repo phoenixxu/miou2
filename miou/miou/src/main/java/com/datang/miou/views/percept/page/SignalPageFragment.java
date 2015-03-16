@@ -13,6 +13,6 @@ public class SignalPageFragment extends BasePageFragment {
 	
 	@Override
 	protected View initUI(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_page_more, null);
+		return inflater.inflate(R.layout.fragment_page_signal, null);
 	}
 }

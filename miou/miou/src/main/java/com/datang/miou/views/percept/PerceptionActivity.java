@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -22,6 +21,7 @@ public class PerceptionActivity extends FragmentActivity implements CompoundButt
     private MainTabView mView = null;
 
     private int mCurrentPageIndex = MainTabView.TAB_INDEX_HOME;
+    private TextView mTitleTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class PerceptionActivity extends FragmentActivity implements CompoundButt
             //TODO
         }
         mView.changeCheckedTabOnPageSelectedChanged(mCurrentPageIndex);
-        TextView mTitleTextView = (TextView) findViewById(R.id.app_title_value);
+        mTitleTextView = (TextView) findViewById(R.id.app_title_value);
         mTitleTextView.setText("用户感知");
         ImageView mBackButton = (ImageView) findViewById(R.id.app_title_left);
         mBackButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +55,7 @@ public class PerceptionActivity extends FragmentActivity implements CompoundButt
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (isChecked) {
+            mTitleTextView.setText(buttonView.getText());
             mView.changeSelectedPageOnTabCheckedChanged(buttonView);
         }
     }

@@ -13,6 +13,6 @@ public class TaskPageFragment extends BasePageFragment {
 
 	@Override
 	protected View initUI(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_page_search, null);
+		return inflater.inflate(R.layout.fragment_page_task, null);
 	}
 }
